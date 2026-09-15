@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Deploy Swetrix CE on Railway — privacy-first analytics with funnels, custom events, and sessions. Full stack with ClickHouse volume." />
+  <meta property="og:title" content="Swetrix on Railway — analytics beyond page views" />
+  <meta property="og:description" content="Self-host Swetrix Community Edition with funnels, events, and volume-backed ClickHouse." />
+  <title>Swetrix on Railway — funnels, events, privacy-first CE</title>
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Syne:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="nav band">
+    <div class="band-inner nav-inner">
+      <a class="logo" href="#">Swetrix · Railway</a>
+      <nav aria-label="Primary">
+        <a href="#stack">Stack</a>
+        <a href="#features">Features</a>
+        <a href="#compare">Why Swetrix</a>
+        <a href="#deploy">Deploy</a>
+      </nav>
+      <a class="btn btn-small btn-ghost" href="https://github.com/romeoxt/railway-template-swetrix-analytics" rel="noopener">GitHub</a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero-band band">
+      <div class="band-inner hero-grid">
+        <div>
+          <p class="kicker">Community Edition · ClickHouse · ~7 marketplace listings</p>
+          <h1>Funnels and custom events — without another Umami deploy.</h1>
+          <p class="lede">Swetrix CE on Railway: API, dashboard, Redis, and volume-backed ClickHouse behind one nginx gateway. Privacy-first analytics for side projects that outgrew basic page counts.</p>
+          <div class="hero-actions">
+            <a class="btn" href="https://gateway-production-0764.up.railway.app/login" rel="noopener">View live demo</a>
+            <a class="btn btn-ghost" href="https://github.com/romeoxt/railway-template-swetrix-analytics" rel="noopener">Setup guide</a>
+          </div>
+        </div>
+        <figure class="hero-panel" aria-labelledby="panel-caption">
+          <figcaption id="panel-caption" class="visually-hidden">Example funnel and event analytics</figcaption>
+          <div class="panel-head">
+            <span>Signup funnel · 7 days</span>
+            <strong>34%</strong>
+          </div>
+          <dl class="panel-rows">
+            <div><dt>Landing → Pricing</dt><dd>612</dd></div>
+            <div><dt>Pricing → Signup</dt><dd>208</dd></div>
+            <div><dt>Event: cta_click</dt><dd>89</dd></div>
+          </dl>
+          <p class="panel-foot">Representative UI — your data lives in ClickHouse.</p>
+        </figure>
+      </div>
+    </section>
+
+    <section id="stack" class="stack-band band">
+      <div class="band-inner">
+        <div class="section-intro">
+          <h2>Five services. One public URL.</h2>
+          <p>Only the gateway is exposed. API, frontend, Redis, and ClickHouse talk over Railway private networking.</p>
+        </div>
+        <ol class="stack-steps">
+          <li>
+            <h3>Gateway</h3>
+            <p>Nginx routes <code>/</code> to the dashboard and <code>/backend/</code> to the API. This repo.</p>
+          </li>
+          <li>
+            <h3>Swetrix API + FE</h3>
+            <p>Official <code>swetrix/swetrix-api</code> and <code>swetrix-fe</code> v5.4.1 images.</p>
+          </li>
+          <li>
+            <h3>ClickHouse + Redis</h3>
+            <p>Events on a persistent volume. Redis for caching. Both private.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section id="features" class="features-band band">
+      <div class="band-inner feature-grid">
+        <article>
+          <h2>Custom events</h2>
+          <p>Track button clicks, signups, and product actions — not just page paths.</p>
+        </article>
+        <article>
+          <h2>Funnels</h2>
+          <p>See where users drop off between steps. Umami templates on Railway do not ship this.</p>
+        </article>
+        <article>
+          <h2>Sessions</h2>
+          <p>Session-level views without handing data to Google.</p>
+        </article>
+        <article>
+          <h2>Performance</h2>
+          <p>Core Web Vitals and error tracking in the CE dashboard.</p>
+        </article>
+        <article>
+          <h2>Volume-backed</h2>
+          <p>ClickHouse data survives redeploys — not ephemeral disk.</p>
+        </article>
+        <article>
+          <h2>Secure signup</h2>
+          <p>First user registers on visit; registration locks after. No shared admin password.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="compare" class="compare-band band">
+      <div class="band-inner compare">
+        <div>
+          <h2>When Swetrix beats another Umami listing</h2>
+          <p>You need funnels or custom events but do not want GA4. Swetrix CE is undersaturated on Railway (~7 listings vs thousands for Umami).</p>
+        </div>
+        <table class="compare-table">
+          <thead>
+            <tr><th scope="col"></th><th scope="col">Swetrix CE</th><th scope="col">Typical Umami deploy</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Funnels</th><td>Yes</td><td>No</td></tr>
+            <tr><th scope="row">Custom events</th><td>Yes</td><td>Limited</td></tr>
+            <tr><th scope="row">Default admin password</th><td>No</td><td>Often yes</td></tr>
+            <tr><th scope="row">You own the stack</th><td>5 services, documented</td><td>1 Docker image</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="deploy" class="cta-band band">
+      <div class="band-inner cta-inner">
+        <div>
+          <h2>Deploy Swetrix CE on Railway</h2>
+          <p>Full README with every env var, or run <code>deploy-swetrix-railway.ps1</code> from the monorepo. Recommend 2GB+ RAM for ClickHouse.</p>
+        </div>
+        <div class="cta-actions">
+          <a class="btn btn-light" href="https://railway.com/deploy/swetrix-analytics-template" rel="noopener">Deploy on Railway</a>
+          <a class="btn btn-ghost-light" href="https://github.com/romeoxt/railway-template-swetrix-analytics" rel="noopener">Open repository</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer band">
+    <div class="band-inner footer-inner">
+      <p>Template by <a href="mailto:herbylegall9@gmail.com">romeoxt</a> · MIT</p>
+      <p><a href="https://swetrix.com" rel="noopener">Swetrix</a> is a separate open-source project</p>
+    </div>
+  </footer>
+</body>
+</html>
